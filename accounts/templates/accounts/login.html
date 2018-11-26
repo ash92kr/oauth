@@ -1,9 +1,17 @@
 {%extends 'base.html'%}
 
+{% load socialaccount %}
+
+
 {%block content%}
     <form method='post'>
         {%csrf_token%}
         {{form.as_p}}
         <input type="submit" value="Submit"/>
     </form>
+    {% providers_media_js %}
+    <a stype = 'background-color : 3b559' class='btn btn-primary' href="{% provider_login_url "facebook" method="js_sdk" %}">
+        <i class="fab fa-facebook"></i>
+        Facebook Connect
+    </a>
 {%endblock%}
